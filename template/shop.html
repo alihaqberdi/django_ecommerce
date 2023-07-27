@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+        <style>
+            .demo1{
+                margin-right: 15px;
+                margin-left: 15px;
+                color: #000;
+            }
+            .demo1:hover{
+                transition: 0.5s;
+                color: #da292a;
+                font-weight: bold;
+            }
+        </style>
+
+
+        <!--Page Title-->
+        <section class="page-title" style="background-image: url({% static 'assets/images/background/page-title.jpg' %});">
+            <div class="auto-container">
+                <div class="content-box">
+                    <div class="title-box">
+                        <h1>Shop</h1>
+                    </div>
+                    <ul class="bread-crumb clearfix">
+                        <li><a href="index.html">Home</a></li>
+                        <li>Shop 01</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!--End Page Title-->
+
+
+        <!-- shop-page-section -->
+        <section class="shop-page-section sec-pad">
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <div class="col-lg-3 col-md-12 col-sm-12 sidebar-side">
+                        <div class="sidebar shop-sidebar">
+                            <div class="sidebar-widget category-widget">
+                                <div class="widget-title">
+                                    <h3>Categories</h3>
+                                </div>
+                                <div class="widget-content">
+                                    <ul class="category-list clearfix" id="categor">
+                                        {% for i in category %}
+                                            {% if activ == i.pk %}
+                                                <li><i class="flaticon-right"></i><a href="{% url 'categories' i.slug %}" class="active">{{ i.name }}</a></li>
+                                            {% else %}
+                                                   <li><i class="flaticon-right"></i><a href="{% url 'categories' i.slug %}" class="">{{ i.name }}</a></li>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="sidebar-widget filter-widget">
+                                <div class="widget-title">
+                                    <h3>Filter</h3> 
+                                </div>
+                                <div class="range-slider clearfix">
+                                    <div class="price-range-slider"></div>
+                                    <div class="clearfix">
+                                        <div class="title"></div>
+                                        <div class="input"><input type="text" class="property-amount" name="field-name" readonly></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sidebar-widget sidebar-tags">
+                                <div class="widget-title">
+                                    <h3>Filter</h3>
+                                </div>
+                                <div class="widget-content">
+                                    <ul class="tags-list clearfix">
+                                        <li><a href="">test</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-12 col-sm-12 content-side">
+                        <div class="our-shop">
+                            <div class="row clearfix" id="js_product">
+                                {% for i in product %}
+                                <div class="col-lg-4 col-md-6 col-sm-12 shop-block">
+                                    <div class="shop-block-one">
+                                        <div class="inner-box">
+                                            <figure class="image-box">
+                                                <img src="{{ i.img.url }}" alt="">
+                                                <ul class="list clearfix">
+                                                    <li><a href="{% url 'cart' %}"><i class="flaticon-cart"></i></a></li>
+                                                    <li><a href="{% url 'cart_add' i.pk %}">add to cart</a></li>
+                                                </ul>
+                                            </figure>
+                                            <div class="lower-content">
+                                                <h6><a href="{% url 'detailpage' i.pk %}">{{ i.title }}</a></h6>
+                                                <ul class="rating clearfix">
+                                                    <li><i class="fas fa-star"></i></li>
+                                                    <li><i class="fas fa-star"></i></li>
+                                                    <li><i class="fas fa-star"></i></li>
+                                                    <li><i class="fas fa-star"></i></li>
+                                                    <li><i class="fas fa-star"></i></li>
+                                                </ul>
+                                                <span class="price"> ${{ i.price }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="pagination-wrapper centred">
+                                <ul class="pagination clearfix" id="paginated">
+                                    {% if product.has_previous %}
+                                        <a href="?page={{ product.previous_page_number }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-left-circle demo1" viewBox="0 0 16 16">
+                                              <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+                                            </svg>
+                                        </a>
+                                        <li><a href="?page=1">1</a></li>
+                                    {% endif %}
+
+                                     {% if product.number|add:'-3' > 1 %}
+                                        <li><a href="?page={{ product.number|add:'-3' }}">...</a></li>
+                                     {% endif %}
+
+                                     {% if product.number|add:'-2' > 1 %}
+                                        <li><a href="?page={{ product.number|add:'-2' }}">{{ product.number|add:'-2' }}</a></li>
+                                     {% endif %}
+
+                                     {% if product.number|add:'-1' > 1 %}
+                                        <li><a href="?page={{ product.number|add:'-1' }}">{{ product.number|add:'-1' }}</a></li>
+                                     {% endif %}
+
+                                    <li><a class="active">{{ product.number }}</a></li>
+
+                                    {% if product.number < product.paginator.num_pages|add:'-1' %}
+                                        <li><a href="?page={{ product.number|add:'1' }}">{{ product.number|add:'1' }}</a></li>
+                                    {% endif %}
+
+                                    {% if product.number < product.paginator.num_pages|add:'-2' %}
+                                        <li><a href="?page={{ product.number|add:'2' }}">{{ product.number|add:'2' }}</a></li>
+                                    {% endif %}
+
+                                    {% if product.number < product.paginator.num_pages|add:'-3' %}
+                                        <li><a>...</a></li>
+                                    {% endif %}
+
+
+                                     {% if product.has_next %}
+                                        <li><a href="?page={{ product.paginator.num_pages }}">{{ product.paginator.num_pages }}</a></li>
+
+
+
+                                        <a href="?page={{ product.next_page_number }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-right-circle demo1" viewBox="0 0 16 16">
+                                              <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+                                            </svg>
+                                        </a>
+
+                                    {% endif %}
+
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <script>
+
+    </script>
+        <!-- shop-page-section end -->
+{% endblock %}

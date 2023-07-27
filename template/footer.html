@@ -1,0 +1,67 @@
+{% load static %}
+     <!-- main-footer -->
+        <footer class="main-footer">
+            <div class="auto-container">
+                <div class="footer-top">
+                    <div class="widget-section">
+                        <div class="row clearfix">
+                            <div class="col-lg-4 col-md-6 col-sm-12 footer-column">
+                                <div class="footer-widget logo-widget">
+                                    <figure class="footer-logo"><a href="{% url 'home' %}"><img src="{% static 'img_default/logo_ali.jpeg' %}" height="200px" width="200px" alt=""></a></figure>
+                                    <div class="text">
+                                        <p>Portfolio uchun Alijon Haqberdiyev tomondan Yaratildi</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 footer-column">
+                                <div class="footer-widget contact-widget">
+                                    <ul class="info clearfix">
+                                        <li>
+                                            <i class="flaticon-phone"></i>
+                                            <p>Aloqa Uchun</p>
+                                            <h5><a href="tel:+998886134044">+998 88 613 40 44</a></h5>
+                                        </li>
+                                        <li>
+                                            <i class="flaticon-maps-and-flags"></i>
+                                            <p>Manzil</p>
+                                            <h5>Samarqand Shahar Xo'ja Qishloq 34</h5>
+                                        </li>
+                                    </ul>
+                                    <ul class="social-links clearfix">
+                                        <li><a href=""><i class="fab fa-github"></i></a></li>
+                                        <li><a href=""><i class="fab fa-telegram"></i></a></li>
+                                        <li><a href=""><i class="fab fa-linkedin"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 footer-column">
+                                <div class="footer-widget newsletter-widget">
+                                    <div class="widget-title">
+                                        <h6>Newsletter</h6>
+                                    </div>
+                                    <div class="widget-content">
+                                        <p>E'tiborga sazovor bo'lgan barcha yangi qo'shimchalardan xabardor bo'ling</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom clearfix">
+                    <div class="copyright pull-left"><h5>Powered by <a href="https://alisheyx.uz/" style="color:red;">Alijon</a></h5></div>
+                    <ul class="footer-nav pull-right clearfix">
+                        <li><a href="{% url 'home' %}">Asosiy</a></li>
+                        <li><a href="{% url 'about' %}">Biz Haqimizda</a></li>
+                        <li><a href="{% url 'shop'%}">Do'kon</a></li>
+                        <li><a href="{% url 'contact'%}">Aloqa</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <!-- main-footer end -->
+
+
+        <!--Scroll to top-->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <span class="fa fa-arrow-up"></span>
+        </button>

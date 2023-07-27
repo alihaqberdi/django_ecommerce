@@ -1,0 +1,172 @@
+{% load static %}
+
+
+        <!-- sidebar cart item -->
+        <div class="xs-sidebar-group info-group info-sidebar">
+            <div class="xs-overlay xs-bg-black"></div>
+            <div class="xs-sidebar-widget">
+                <div class="sidebar-widget-container">
+                    <div class="widget-heading">
+                        <a href="{% url 'home' %}" class="close-side-widget">X</a>
+                    </div>
+                    <div class="sidebar-textwidget">
+                        <div class="sidebar-info-contents">
+                            <div class="content-inner">
+                                <div class="logo">
+                                    <a href="{% url 'home' %}"><img src="{% static 'img_default/logo_ali.jpeg' %}" alt="" /></a>
+                                </div>
+                                <div class="content-box">
+                                    <h4>Biz haqimizda</h4>
+                                    <p>{{about.description}}</p>
+                                    <a href="{% url 'about' %}" class="theme-btn">Biz haqimizda<i class="fas fa-long-arrow-alt-right"></i></a>
+                                </div>
+                                <div class="contact-info">
+                                    <h4>Aloqa Uchun</h4>
+                                    <ul>
+                                        <li>Samarqand Xo'ja Qishloq 34</li>
+                                        <li><a href="tel:+998886134044">+998 88 613 40 44</a></li>
+                                        <li><a href="mailto:alhppypro@gmail.com">alhppypro@gmail.com</a></li>
+                                    </ul>
+                                </div>
+                                <ul class="social-box">
+                                    <li class="facebook"><a href="{{base.facebook}}" class="fab fa-facebook-f"></a></li>
+                                    <li class="instagram"><a href="{{base.instagram}}" class="fab fa-instagram"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END sidebar widget item -->
+
+
+        <!-- main header -->
+        <header class="main-header">
+            <div class="header-top">
+                <div class="auto-container">
+                    <div class="top-info">
+                        <ul class="info-list clearfix">
+                            <li>
+                                <i class="flaticon-location-pin"></i>Samarqand Xo'ja Qishloq 34
+                            </li>
+                            <li>
+                                <i class="flaticon-envelope"></i><a href="mailto:alhppypro@gmail.com">alhppypro@gmail.com</a>
+                            </li>
+                            <li class="phone">
+                                <i class="flaticon-dial"></i><a href="tel:+998886134044">+998 88 613 40 44</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="header-upper">
+                <div class="auto-container">
+                    <div class="outer-box clearfix">
+                        <div class="logo-box">
+                            <figure class="logo"><a href="{% url 'home'%}"><img src="{% static 'img_default/logo_ali.jpeg' %}" height="100px" width="100px" alt=""></a></figure>
+                        </div>
+                        <div class="menu-area pull-right">
+                            <!--Mobile Navigation Toggler-->
+                            <div class="mobile-nav-toggler">
+                                <i class="icon-bar"></i>
+                                <i class="icon-bar"></i>
+                                <i class="icon-bar"></i>
+                            </div>
+                            <nav class="main-menu navbar-expand-md navbar-light">
+                                <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                    <ul class="navigation clearfix">
+                                        <li><a href="{% url 'home' %}">Asosiy</a></li>
+                                        <li><a href="{% url 'shop' %}">Do'kon</a></li>
+                                        <li><a href="{% url 'about' %}">Biz haqimizda</a></li>
+                                        <li><a href="{% url 'contact' %}">Aloqa</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                            <ul class="menu-right-content pull-left clearfix">
+                                <li class="user-box dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="flaticon-user-symbol-of-thin-outline"></i>
+                                    </a>
+                                    <ul class="dropdown-menu" style="text-align: center">
+                                        {% if user.is_authenticated %}
+                                            <li><a href="{% url 'profile' user.uniq_id %}" style="font-size: 14px">Profile</a></li><br>
+                                            <li><a href="{% url 'logout' user.uniq_id %}" style="font-size: 14px">Log out</a></li>
+                                        {% else %}
+                                            <li><a href="{% url 'login' %}" style="font-size: 14px">Log in</a></li><br>
+                                            <li><a href="{% url 'signup' %}" style="font-size: 14px">Register</a></li>
+                                        {% endif %}
+                                    </ul>
+                                </li>
+                                <li class="search-box-outer">
+                                    <div class="dropdown">
+                                        <button class="search-box-btn" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="flaticon-search"></span></button>
+                                        <ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu3">
+                                            <li class="panel-outer">
+                                                <div class="form-container">
+                                                    <form method="post" action="{% url 'search' %}">{% csrf_token %}
+                                                        <div class="form-group">
+                                                            <input type="search" name="search" value="" placeholder="Search...." required="">
+                                                            <button type="submit" class="search-btn"><span class="fas fa-search"></span></button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="cart-box"><a href="{% url 'cart' %}"><i class="flaticon-shopping-cart-1"></i><span>{{ item_len }}</span></a></li>
+                                <li class="nav-box">
+                                    <div class="nav-btn nav-toggler navSidebar-button clearfix">
+                                        <i class="flaticon-list"></i>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--sticky Header-->
+            <div class="sticky-header">
+                <div class="auto-container">
+                    <div class="outer-box clearfix">
+                        <figure class="logo-box pull-left"><a href="index.html"><img src="{% static 'assets/images/small-logo.png' %}" alt=""></a></figure>
+                        <div class="menu-area pull-right">
+                            <nav class="main-menu clearfix">
+                                <!--Keep This Empty / Menu will come through Javascript-->
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- main-header end -->
+
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><i class="fas fa-times"></i></div>
+
+            <nav class="menu-box">
+                <div class="nav-logo"><a href="index.html"><img src="{% static 'assets/images/logo-2.png' %}" alt="" title=""></a></div>
+                <div class="menu-outer"></div>
+                <div class="contact-info">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li>Samarqand Shahar Xo'ja Qishloq 34</li>
+                        <li><a href="tel:+8801682648101">+998 88 613 40 44</a></li>
+                        <li><a href="mailto:alhppypro@gmail.com">alhppypro@gmail.com</a></li>
+                    </ul>
+                </div>
+                <div class="social-links">
+                    <ul class="clearfix">
+                        <li><a href="index.html"><span class="fab fa-twitter"></span></a></li>
+                        <li><a href="index.html"><span class="fab fa-facebook-square"></span></a></li>
+                        <li><a href="index.html"><span class="fab fa-pinterest-p"></span></a></li>
+                        <li><a href="index.html"><span class="fab fa-instagram"></span></a></li>
+                        <li><a href="index.html"><span class="fab fa-youtube"></span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div><!-- End Mobile Menu -->

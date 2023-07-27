@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!--Page Title-->
+        <section class="page-title" style="background-image: url({% static 'assets/images/background/page-title.jpg' );">
+            <div class="auto-container">
+                <div class="content-box">
+                    <div class="title-box">
+                        <h1>Contact Us</h1>
+                    </div>
+                    <ul class="bread-crumb clearfix">
+                        <li><a href="index.html">Home</a></li>
+                        <li>Contact Us</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!--End Page Title-->
+
+
+        <!-- google-map-section -->
+        <section class="google-map-section">
+            <div class="map-column">
+                <div
+                    class="google-map"
+                    id="contact-google-map"
+                    data-map-lat="40.712776"
+                    data-map-lng="-74.005974"
+                    data-icon-path="{% static 'assets/images/icons/map-marker.png' %}"
+                    data-map-title="Brooklyn, New York, United Kingdom"
+                    data-map-zoom="12"
+                    data-markers='{"marker-1": [40.712776, -74.005974, "<h4>Branch Office</h4><p>77/99 New York</p>","assets/images/icons/map-marker.png"]}'>
+
+                </div>
+            </div>
+        </section>
+        <!-- google-map-section end -->
+
+
+        <!-- contact-info-section -->
+        <section class="contact-info-section centred">
+            <div class="auto-container">
+                <div class="inner-container">
+                    <div class="row clearfix">
+                        <div class="col-lg-4 col-md-6 col-sm-12 info-column">
+                            <div class="single-info">
+                                <div class="inner-box">
+                                    <div class="big-icon"><i class="flaticon-telephone"></i></div>
+                                    <div class="icon-box"><i class="flaticon-telephone"></i></div>
+                                    <h3>Telefon Raqam</h3>
+                                    <p><a href="tel:+998991445435">+998 99 144 54 35</a><br /><a href="tel:+998886134044">+998 88 613 40 44</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 info-column">
+                            <div class="single-info">
+                                <div class="inner-box">
+                                    <div class="big-icon"><i class="flaticon-mail"></i></div>
+                                    <div class="icon-box"><i class="flaticon-mail"></i></div>
+                                    <h3>Email Manzil</h3>
+                                    <p><a href="mailto:alhppypro@gmail.com">alhppypro@gmail.com</a><br /><a href="mailto:alisheyx361@gmail.com">alisheyx361@gmail.com</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 info-column">
+                            <div class="single-info">
+                                <div class="inner-box">
+                                    <div class="big-icon"><i class="flaticon-maps-and-flags"></i></div>
+                                    <div class="icon-box"><i class="flaticon-maps-and-flags"></i></div>
+                                    <h3>Office Manzili</h3>
+                                    <p>Samarqand Shahar Amir Temur ko'chasi 11 uy</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- contact-info-section end -->
+
+
+        <!-- contact-section -->
+        <section class="contact-section centred">
+            <div class="auto-container">
+                <div class="sec-title">
+                    <span>Contact</span>
+                    <h2>Get In Touch</h2>
+                </div>
+                <div class="form-inner">
+                    <form method="post" action="assets/inc/sendemail.php" id="contact-form" class="default-form">
+                        <div class="row clearfix">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <i class="far fa-user"></i>
+                                    <input type="text" name="username" placeholder="Name" required="">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <i class="far fa-envelope"></i>
+                                    <input type="email" name="email" placeholder="Email" required="">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <i class="fas fa-phone-volume"></i>
+                                    <input type="text" name="phone" required="" placeholder="Phone">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <i class="far fa-file-alt"></i>
+                                    <input type="text" name="subject" required="" placeholder="Subject">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <i class="far fa-comment-alt"></i>
+                                    <textarea name="message" placeholder="Message"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 form-group message-btn centred">
+                                <button class="theme-btn" type="submit" name="submit-form">
+                                    SEND MESSAGE
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- contact-section end -->
+
+
+        <!-- clients-section -->
+        <section class="clients-section">
+            <div class="auto-container">
+                <div class="clients-carousel owl-carousel owl-theme owl-dots-none owl-nav-none">
+                    <figure class="logo-image"><a href="index.html"><img src="assets/images/clients/clients-logo-1.png" alt=""></a></figure>
+                    <figure class="logo-image"><a href="index.html"><img src="assets/images/clients/clients-logo-2.png" alt=""></a></figure>
+                    <figure class="logo-image"><a href="index.html"><img src="assets/images/clients/clients-logo-3.png" alt=""></a></figure>
+                    <figure class="logo-image"><a href="index.html"><img src="assets/images/clients/clients-logo-4.png" alt=""></a></figure>
+                    <figure class="logo-image"><a href="index.html"><img src="assets/images/clients/clients-logo-5.png" alt=""></a></figure>
+                </div>
+            </div>
+        </section>
+        <!-- clients-section end -->
+{% endblock %}
