@@ -1,5 +1,7 @@
 from django.core.paginator import Paginator
-from .models import Product, Rating, Cart, CartItem, Category
+from django.urls import reverse
+from django.contrib.auth.decorators import login_required
+from .models import Product, Rating, Cart, CartItem, Category, Comment
 from django.shortcuts import render, get_object_or_404, redirect
 from .form import ContactMsgForm
 from django.contrib import messages
@@ -28,6 +30,7 @@ def AllView(request):
         else:
             return {"item_len": len(session_cart['product'])}
 
+
 def all_obj(request, obj):
     p = Paginator(obj, 12)
     page = request.GET.get('page')
@@ -39,16 +42,38 @@ def home(request):
     context = {}
     return render(request, 'home.html', context=context)
 
+
 def DetailPageView(request, pk):
     obj = get_object_or_404(Product, pk=pk)
+    category_obj = Product.objects.filter(category=obj.category)
+    comment = Comment.objects.filter(post=obj)
     context = {
-        'obj': obj
+        "obj_category": category_obj,
+        'obj': obj,
+        "comment": comment
     }
     return render(request, 'shop-details.html', context)
 
 
 def about(request):
     return render(request, 'about.html')
+
+
+@login_required(login_url='login')
+def CommentAddView(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    rating = request.GET.get('rating', None)
+    Rating.objects.update_or_create(
+        user=request.user,
+        product=product,
+        defaults={"rating": rating}
+    )
+    Comment.objects.create(
+        user=request.user,
+        message=request.GET.get("message"),
+        post=product
+    )
+    return redirect('detailpage', pk)
 
 
 def ShopView(request):
@@ -106,7 +131,7 @@ def CartView(request):
         cart_session = request.session.setdefault('cart', {})
         for i in cart_session['product']:
             obj_product = get_object_or_404(Product, pk=i['product'])
-            obj_product.total_price =obj_product.price * i['quantity']
+            obj_product.total_price = int(obj_product.price) * int(i['quantity'])
             obj_product.quantity = i['quantity']
             obj.append(obj_product)
         context = {
@@ -181,7 +206,6 @@ def CartItemRemoveView(request, pk):
             return redirect('cart')
 
 
-
 def DeleteItemCart(request, pk):
     if request.user.is_authenticated:
         obj = CartItem.objects.get(pk=pk)
@@ -201,7 +225,6 @@ def DeleteItemCart(request, pk):
             return redirect('cart')
 
 
-
 def ContactView(request):
     if request.method == 'POST':
         form = ContactMsgForm(request.POST)
@@ -212,3 +235,45 @@ def ContactView(request):
         messages.error(request, "xatolik Xabar yuborilmadi")
         return redirect('contact')
     return render(request, 'contact.html')
+
+
+def DetailAddCart(request, pk):
+    quantity = request.GET.get('quantity', None)
+    if request.user.is_authenticated:
+        cart = get_object_or_404(Cart, user=request.user)
+        product = get_object_or_404(Product, pk=pk)
+        full_item = CartItem.objects.filter(cart=cart)
+        single_item = full_item.filter(product=product)
+        if single_item:
+            single_item = single_item[0]
+            if single_item.quantity > 1:
+                single_item.quantity = int(single_item.quantity) + int(quantity)
+                single_item.total_price = int(single_item.quantity) * int(product.price)
+                single_item.save()
+                return redirect('cart')
+            single_item.quantity = quantity
+            single_item.total_price = int(quantity) * int(product.price)
+            single_item.save()
+            return redirect('cart')
+        itm = CartItem.objects.create(
+            cart=cart, product=product,
+        )
+        itm.quantity = quantity
+        itm.total_price = int(quantity) * int(product.price)
+        itm.save()
+        return redirect('cart')
+    else:
+        cart = request.session.setdefault('cart', {})
+        product = get_object_or_404(Product, pk=pk)
+        if cart['product'] == []:
+            cart['product'].append({"product": product.id, "quantity": quantity})
+            request.session['cart'] = cart
+            return redirect('cart')
+        for i in cart['product']:
+            if i['product'] == product.id:
+                i['quantity'] = int(quantity) + int(i['quantity'])
+                request.session['cart'] = cart
+                return redirect('cart')
+        cart['product'].append({"product": product.id, "quantity": quantity})
+        request.session['cart'] = cart
+        return redirect('cart')

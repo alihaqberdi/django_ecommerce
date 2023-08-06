@@ -1,18 +1,26 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block css %}
+<style>
+    .demo1{
+        margin-right: 15px;
+        margin-left: 15px;
+        color: #000;
+    }
+    .demo1:hover{
+        transition: 0.5s;
+        color: #da292a;
+        font-weight: bold;
+    }
+
+    .selecting{
+    font-size: 24px
+</style>
+
+
+{% endblock %}
 {% block content %}
-        <style>
-            .demo1{
-                margin-right: 15px;
-                margin-left: 15px;
-                color: #000;
-            }
-            .demo1:hover{
-                transition: 0.5s;
-                color: #da292a;
-                font-weight: bold;
-            }
-        </style>
 
 
         <!--Page Title-->
@@ -35,6 +43,17 @@
         <!-- shop-page-section -->
         <section class="shop-page-section sec-pad">
             <div class="auto-container">
+                <div class="row">
+                    <div class="col-8"> </div>
+                <div class="col-4">
+                <select class="form-select selecting" aria-label="Default select example">
+                      <option selected>Open this select menu</option>
+                      <option value="1">Arzon -- Qimmatlashib</option>
+                      <option value="2">Qimmat -- Arzonlashib</option>
+                      <option value="3"></option>
+                    </select>
+                </div>
+                </div><hr>
                 <div class="row clearfix">
                     <div class="col-lg-3 col-md-12 col-sm-12 sidebar-side">
                         <div class="sidebar shop-sidebar">
@@ -56,7 +75,7 @@
                             </div>
                             <div class="sidebar-widget filter-widget">
                                 <div class="widget-title">
-                                    <h3>Filter</h3> 
+                                    <h3>Filter</h3>
                                 </div>
                                 <div class="range-slider clearfix">
                                     <div class="price-range-slider"></div>
@@ -66,18 +85,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="sidebar-widget sidebar-tags">
-                                <div class="widget-title">
-                                    <h3>Filter</h3>
-                                </div>
-                                <div class="widget-content">
-                                    <ul class="tags-list clearfix">
-                                        <li><a href="">test</a></li>
-                                    </ul>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
+
                     <div class="col-lg-9 col-md-12 col-sm-12 content-side">
                         <div class="our-shop">
                             <div class="row clearfix" id="js_product">
@@ -95,13 +106,9 @@
                                             <div class="lower-content">
                                                 <h6><a href="{% url 'detailpage' i.pk %}">{{ i.title }}</a></h6>
                                                 <ul class="rating clearfix">
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
+                                                    <li><i class="fas fa-star" style="font-size: 20px"></i></li><span style="font-size: 20px;">{{ i.rating_num }}</span>
                                                 </ul>
-                                                <span class="price"> ${{ i.price }}</span>
+                                                <span class="price"> $ {{ i.price }}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -173,3 +180,4 @@
     </script>
         <!-- shop-page-section end -->
 {% endblock %}
+

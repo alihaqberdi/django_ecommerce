@@ -15,5 +15,7 @@ urlpatterns = [
     path('product/filter/<int:minimum>/<int:maximum>/', views.ProductFilterView, name='product_filter'),
     path('search/', views.SearchView, name='search'),
     path('product/<int:pk>/', views.DetailPageView, name='detailpage'),
+    path('detailpageadditem/<int:pk>/', views.DetailAddCart, name="detail_add_cart"),
+    path("comment-add/<int:pk>/", views.CommentAddView, name="add_comment")
 
 ]

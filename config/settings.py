@@ -44,8 +44,7 @@ INSTALLED_APPS = [
     'phone_field',
     'rest_framework',
     'ckeditor',
-    'drf_yasg',
-    'django_filters',
+
 
     # local
     'product',
@@ -89,9 +88,13 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite7',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "shopping",
+        "USER": "postgres",
+        "PASSWORD": "lopsed2211tyg",
+        "HOST": "db",
+        "PORT": "5432",
     }
 }
 
@@ -120,7 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True
 

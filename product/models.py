@@ -23,6 +23,7 @@ class ProductManager(models.Manager):
 class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
     title = models.CharField(max_length=300)
+    description = models.TextField()
     img = models.ImageField()
     price = models.DecimalField(max_digits=17, decimal_places=2)
     rating_num = models.DecimalField(max_digits=3, decimal_places=1, default=0)
@@ -31,6 +32,7 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
+
 
 
 
@@ -98,3 +100,11 @@ class ContactMsg(models.Model):
     phone = models.CharField(max_length=20)
     subject = models.CharField(max_length=160)
     message = models.TextField()
+
+
+class Comment(models.Model):
+    reply = models.ForeignKey("Comment", on_delete=models.SET_NULL, null=True, blank=True)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    message = models.CharField(max_length=400)
+    post = models.ForeignKey(Product, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True, null=True)

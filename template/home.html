@@ -5,11 +5,11 @@
         <section class="main-slider">
             <div class="main-slider-carousel owl-theme owl-carousel owl-dots-none">
                 <div class="slide-item">
-                    <div class="image-layer" style="background-image:url({{slider.image.url}})"></div>
+                    <div class="image-layer" style="background-image:url({% static 'img_default/img_9.png' %})"></div>
                     <div class="auto-container">
                         <div class="content-box">
-                            <h1>{{slider.title}}</h1>
-                            <p>{{slider.description}}</p>
+                            <h1>Bizda Hamma narsa bor</h1>
+                            <p>Istalgan mahsulot istalgan hajm, tezkor yetkazish va boshqalar faqat bizda</p>
                             <div class="btn-box">
                                 <a href="{% url 'home'%}" class="theme-btn">Batafsil ma'lumot<i class="fas fa-long-arrow-alt-right"></i></a>
                             </div>
@@ -17,11 +17,11 @@
                     </div>
                 </div>
                 <div class="slide-item">
-                    <div class="image-layer" style="background-image:url({{slider1.image.url}})"></div>
+                    <div class="image-layer" style="background-image:url({% static 'img_default/img_11.png' %})"></div>
                     <div class="auto-container">
                         <div class="content-box centred">
-                            <h1>{{slider1.title}}</h1>
-                            <p>{{slider1.description}}</p>
+                            <h1>Oziq ovqat, Meva va boshqalar</h1>
+                            <p>Turli-xil oziq ovqatlar, tropic mevalar yangi sabzavotlar faqat bizda yetkazib berish bepul</p>
                             <div class="btn-box">
                                 <a href="{% url 'home'%}" class="theme-btn">Batafsil ma'lumot<i class="fas fa-long-arrow-alt-right"></i></a>
                             </div>
@@ -29,11 +29,11 @@
                     </div>
                 </div>
                 <div class="slide-item">
-                    <div class="image-layer" style="background-image:url({{slider2.image.url}})"></div>
+                    <div class="image-layer" style="background-image:url({% static 'img_default/img_13.png' %})"></div>
                     <div class="auto-container">
                         <div class="content-box">
-                            <h1>{{slider2.title}}</h1>
-                            <p>{{slider2.description}}</p>
+                            <h1>Kiyim-Kechak</h1>
+                            <p>Turli xildagi kiyim kechaklar erkaklar kiyimi, ayollar kiyimi, bolalar kiyimi, va boshqalar bizda</p>
                             <div class="btn-box">
                                 <a href="{% url 'home'%}" class="theme-btn">Batafsil ma'lumot<i class="fas fa-long-arrow-alt-right"></i></a>
                             </div>
@@ -52,8 +52,8 @@
                     <div class="row clearfix">
                         <div class="col-lg-6 col-md-6 col-sm-12 video-column">
                             <div id="video_block_1">
-                                <div class="video-inner" style="background-image: url({{about.videos_img.url}});">
-                                    <a href="{{about.videos_link}}" class="lightbox-image video-btn" data-caption=""><i class="fas fa-play"></i></a>
+                                <div class="video-inner" style="background-image: url({% static 'img_default/ali2.jpeg' %});">
+                                    <a href="https://youtu.be/2W7lvbLIlp4" class="lightbox-image video-btn" data-caption=""><i class="fas fa-play"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -62,10 +62,12 @@
                                 <div class="content-box">
                                     <div class="sec-title">
                                         <span>Biz haqimizda</span>
-                                        <h2>{{about.title}}</h2>
+                                        <h2>Bizning kampaniya va kampaniya xodimlari</h2>
                                     </div>
                                     <div class="text">
-                                        <p>{{about.description}}</p>
+                                        <p>Biz O'zbekiston bozorida o'z o'rin va qadriyatlariga ega katta kampaniyamiz.
+                                        hozirda kampaniyamizga 2000+ ziyod mutaxasislar, 300+ ziyod dasturchi injinerlar
+                                        ishlab kelmoqdalar va ...</p>
                                     </div>
                                     <div class="btn-box">
                                         <a href="{% url 'about' %}" class="theme-btn">Batafsil<i class="fas fa-long-arrow-alt-right"></i></a>
@@ -81,12 +83,17 @@
 
 
         <!-- clients-section -->
-        <section class="clients-section">
+        <section class="clients-section" style="text-align: center">
+            <h1>Bizning hamkorlar</h1><br><br>
             <div class="auto-container">
                 <div class="clients-carousel owl-carousel owl-theme owl-dots-none owl-nav-none">
-                    {% for i in partner %}
-                    <figure class="logo-image"><a href=""><img src="{{ i.image.url }}" alt=""></a></figure>
-                    {% endfor %}
+
+                    <figure class="logo-image"><a href=""><img src="{% static 'img_default/img_1.png' %}" alt=""></a></figure>
+                    <figure class="logo-image"><a href=""><img src="{% static 'img_default/img_2.png' %}" alt=""></a></figure>
+                    <figure class="logo-image"><a href=""><img src="{% static 'img_default/img_3.png' %}" alt=""></a></figure>
+                    <figure class="logo-image"><a href=""><img src="{% static 'img_default/img_4.png' %}" alt=""></a></figure>
+                    <figure class="logo-image"><a href=""><img src="{% static 'img_default/img_1.png' %}" alt=""></a></figure>
+
                 </div>
             </div>
         </section>
@@ -106,11 +113,11 @@
                     <div class="col-lg-4 col-md-6 col-sm-12 service-block">
                         <div class="service-block-one wow fadeInUp animated animated" data-wow-delay="00ms" data-wow-duration="1500ms">
                             <div class="inner-box">
-                                <div class="icon-box"><i class="flaticon-meat-4"></i></div>
-                                <h3><a href="index.html">Veal Entrecote</a></h3>
-                                <p>Lorem ipsum dolor sit amet, consec tetur adipis</p>
+                                <h3><a href="">Tezkor Yetkazish</a></h3>
+                                <p>Bizning Yetkazib berish xizmatimiz eng tezkor hisoblanadi. buning sababi
+                                tezkor ishchilar va ishchilar uchun qulay texnika taminlangan. qulaylik hamma uchun</p>
                                 <div class="btn-box">
-                                    <a href="index.html" class="theme-btn">Read More</a>
+                                    <a href="" class="theme-btn">Batafsil</a>
                                 </div>
                             </div>
                         </div>
@@ -118,11 +125,11 @@
                     <div class="col-lg-4 col-md-6 col-sm-12 service-block">
                         <div class="service-block-one wow fadeInUp animated animated" data-wow-delay="300ms" data-wow-duration="1500ms">
                             <div class="inner-box">
-                                <div class="icon-box"><i class="flaticon-hang"></i></div>
-                                <h3><a href="index.html">Pork Tenderloin</a></h3>
-                                <p>Lorem ipsum dolor sit amet, consec tetur adipis</p>
+                                <h3><a href="">Har doim Yangi</a></h3>
+                                <p>Bizda mahsulot Belgilangan muddatgacha bormasdan mazilga yetkaziladi. yoinki mahsulot
+                                qaytarib olinib savdodan chiqariladi va o'rni yangi mahsulotga almashtiriladi</p>
                                 <div class="btn-box">
-                                    <a href="index.html" class="theme-btn">Read More</a>
+                                    <a href="" class="theme-btn">Batafsil</a>
                                 </div>
                             </div>
                         </div>
@@ -130,11 +137,11 @@
                     <div class="col-lg-4 col-md-6 col-sm-12 service-block">
                         <div class="service-block-one wow fadeInUp animated animated" data-wow-delay="600ms" data-wow-duration="1500ms">
                             <div class="inner-box">
-                                <div class="icon-box"><i class="flaticon-meat-5"></i></div>
-                                <h3><a href="index.html">Beaf ribs</a></h3>
-                                <p>Lorem ipsum dolor sit amet, consec tetur adipis</p>
+                                <h3><a href="">Qulay va arzon</a></h3>
+                                <p>Mijozlar ko'pligining sabablaridan biri ham shudir albatta arzon va sifatli mahsulot
+                                hisoblanadi. bizda narxlar eng minimal darajada belgilanadi. va har-kunlik chegirmalar mavjud</p>
                                 <div class="btn-box">
-                                    <a href="index.html" class="theme-btn">Read More</a>
+                                    <a href="" class="theme-btn">Batafsil</a>
                                 </div>
                             </div>
                         </div>
@@ -184,10 +191,10 @@
                     <div class="col-lg-6 col-md-12 col-sm-12 image-column">
                         <div id="image_block_1">
                             <div class="image-box">
-                                <figure class="image image-1"><img src="{% static 'assets/images/resource/about-2.jpg' %}" alt=""></figure>
-                                <figure class="image image-2"><img src="{% static 'assets/images/resource/about-3.jpg' %}" alt=""></figure>
-                                <figure class="image image-3"><img src="{% static 'assets/images/resource/about-1.png' %}" alt=""></figure>
-                                <figure class="image image-4"><img src="{% static 'assets/images/resource/about-2.png' %}" alt=""></figure>
+                                <figure class="image image-1"><img src="{% static 'img_default/img_15.png' %}" alt=""></figure>
+                                <figure class="image image-2"><img src="{% static 'img_default/img_16.png' %}" alt=""></figure>
+                                <figure class="image image-3"><img src="{% static 'img_default/img_17png' %}" alt=""></figure>
+                                <figure class="image image-4"><img src="{% static 'img_default/img_18.png' %}" alt=""></figure>
                             </div>
                         </div>
                     </div>
@@ -195,258 +202,6 @@
             </div>
         </section>
         <!-- about-style-two end -->
-
-
-<!--        &lt;!&ndash; shop-section &ndash;&gt;-->
-<!--        <section class="shop-section">-->
-<!--            <div class="auto-container">-->
-<!--                <div class="sec-title style-two text-center">-->
-<!--                    <span>See all products</span>-->
-<!--                    <h2>Featured Prodcuts</h2>-->
-<!--                </div>-->
-<!--                <div class="row clearfix">-->
-<!--                    <div class="col-lg-3 col-md-6 col-sm-12 shop-block">-->
-<!--                        <div class="shop-block-one wow fadeInUp animated animated" data-wow-delay="00ms" data-wow-duration="1500ms">-->
-<!--                            <div class="inner-box">-->
-<!--                                <figure class="image-box">-->
-<!--                                    <img src="{% static 'assets/images/resource/shop/shop-1.jpg' %}" alt="">-->
-<!--                                    <ul class="list clearfix">-->
-<!--                                        <li><a href="shop-1.html"><i class="flaticon-cart"></i></a></li>-->
-<!--                                        <li><a href="shop-details.html">add to cart</a></li>-->
-<!--                                    </ul>-->
-<!--                                </figure>-->
-<!--                                <div class="lower-content">-->
-<!--                                    <h6><a href="shop-details.html">Whole Tenderloin</a></h6>-->
-<!--                                    <ul class="rating clearfix">-->
-<!--                                        <li><i class="fas fa-star"></i></li>-->
-<!--                                        <li><i class="fas fa-star"></i></li>-->
-<!--                                        <li><i class="fas fa-star"></i></li>-->
-<!--                                        <li><i class="fas fa-star"></i></li>-->
-<!--                                        <li><i class="fas fa-star"></i></li>-->
-<!--                                    </ul>-->
-<!--                                    <span class="price">$ 400.00</span>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="col-lg-3 col-md-6 col-sm-12 shop-block">-->
-<!--                        <div class="shop-block-one wow fadeInUp animated animated" data-wow-delay="200ms" data-wow-duration="1500ms">-->
-<!--                            <div class="inner-box">-->
-<!--                                <figure class="image-box">-->
-<!--                                    <img src="assets/images/resource/shop/shop-2.jpg" alt="">-->
-<!--                                    <ul class="list clearfix">-->
-<!--                                        <li><a href="shop-1.html"><i class="flaticon-cart"></i></a></li>-->
-<!--                                        <li><a href="shop-details.html">add to cart</a></li>-->
-<!--                                    </ul>-->
-<!--                                </figure>-->
-<!--                                <div class="lower-content">-->
-<!--                                    <h6><a href="shop-details.html">Whole Fryer</a></h6>-->
-<!--                                    <ul class="rating clearfix">-->
-<!--                                        <li><i class="fas fa-star"></i></li>-->
-<!--                                        <li><i class="fas fa-star"></i></li>-->
-<!--                                        <li><i class="fas fa-star"></i></li>-->
-<!--                                        <li><i class="fas fa-star"></i></li>-->
-<!--                                        <li><i class="fas fa-star"></i></li>-->
-<!--                                    </ul>-->
-<!--                                    <span class="price">$ 450.00</span>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="col-lg-3 col-md-6 col-sm-12 shop-block">-->
-<!--                        <div class="shop-block-one wow fadeInUp animated animated" data-wow-delay="400ms" data-wow-duration="1500ms">-->
-<!--                            <div class="inner-box">-->
-<!--                                <figure class="image-box">-->
-<!--                                    <img src="assets/images/resource/shop/shop-3.jpg" alt="">-->
-<!--                                    <ul class="list clearfix">-->
-<!--                                        <li><a href="shop-1.html"><i class="flaticon-cart"></i></a></li>-->
-<!--                                        <li><a href="shop-details.html">add to cart</a></li>-->
-<!--                                    </ul>-->
-<!--                                </figure>-->
-<!--                                <div class="lower-content">-->
-<!--                                    <h6><a href="shop-details.html">Rib Steak</a></h6>-->
-<!--                                    <ul class="rating clearfix">-->
-<!--                                        <li><i class="fas fa-star"></i></li>-->
-<!--                                        <li><i class="fas fa-star"></i></li>-->
-<!--                                        <li><i class="fas fa-star"></i></li>-->
-<!--                                        <li><i class="fas fa-star"></i></li>-->
-<!--                                        <li><i class="fas fa-star"></i></li>-->
-<!--                                    </ul>-->
-<!--                                    <span class="price">$ 500.00</span>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="col-lg-3 col-md-6 col-sm-12 shop-block">-->
-<!--                        <div class="shop-block-one wow fadeInUp animated animated" data-wow-delay="600ms" data-wow-duration="1500ms">-->
-<!--                            <div class="inner-box">-->
-<!--                                <figure class="image-box">-->
-<!--                                    <img src="assets/images/resource/shop/shop-4.jpg" alt="">-->
-<!--                                    <ul class="list clearfix">-->
-<!--                                        <li><a href="shop-1.html"><i class="flaticon-cart"></i></a></li>-->
-<!--                                        <li><a href="shop-details.html">add to cart</a></li>-->
-<!--                                    </ul>-->
-<!--                                </figure>-->
-<!--                                <div class="lower-content">-->
-<!--                                    <h6><a href="shop-details.html">Chuck Roast</a></h6>-->
-<!--                                    <ul class="rating clearfix">-->
-<!--                                        <li><i class="fas fa-star"></i></li>-->
-<!--                                        <li><i class="fas fa-star"></i></li>-->
-<!--                                        <li><i class="fas fa-star"></i></li>-->
-<!--                                        <li><i class="fas fa-star"></i></li>-->
-<!--                                        <li><i class="fas fa-star"></i></li>-->
-<!--                                    </ul>-->
-<!--                                    <span class="price">$ 380.00</span>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="more-btn centred">-->
-<!--                    <a href="shop-1.html" class="theme-btn">Shop Now</a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </section>-->
-<!--        &lt;!&ndash; shop-section end &ndash;&gt;-->
-
-
-<!--        &lt;!&ndash; portfolio-section &ndash;&gt;-->
-<!--        <section class="portfolio-section">-->
-<!--            <div class="auto-container">-->
-<!--                <div class="single-item-carousel owl-carousel owl-theme owl-dots-none">-->
-<!--                    <div class="portfolio-block-one">-->
-<!--                        <div class="inner-box">-->
-<!--                            <figure class="image-box"><img src="assets/images/resource/portfolio-1.jpg" alt=""></figure>-->
-<!--                            <div class="lower-content">-->
-<!--                                <div class="inner">-->
-<!--                                    <span>Meat</span>-->
-<!--                                    <h4><a href="index.html">Pork tenderloin</a></h4>-->
-<!--                                    <div class="link"><a href="index.html"><i class="flaticon-right"></i></a></div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="portfolio-block-one">-->
-<!--                        <div class="inner-box">-->
-<!--                            <figure class="image-box"><img src="assets/images/resource/portfolio-2.jpg" alt=""></figure>-->
-<!--                            <div class="lower-content">-->
-<!--                                <div class="inner">-->
-<!--                                    <span>Meat</span>-->
-<!--                                    <h4><a href="index.html">Pork tenderloin</a></h4>-->
-<!--                                    <div class="link"><a href="index.html"><i class="flaticon-right"></i></a></div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="portfolio-block-one">-->
-<!--                        <div class="inner-box">-->
-<!--                            <figure class="image-box"><img src="assets/images/resource/portfolio-3.jpg" alt=""></figure>-->
-<!--                            <div class="lower-content">-->
-<!--                                <div class="inner">-->
-<!--                                    <span>Meat</span>-->
-<!--                                    <h4><a href="index.html">Pork tenderloin</a></h4>-->
-<!--                                    <div class="link"><a href="index.html"><i class="flaticon-right"></i></a></div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </section>-->
-<!--        &lt;!&ndash; portfolio-section end &ndash;&gt;-->
-
-
-<!--        &lt;!&ndash; testimonial-section &ndash;&gt;-->
-<!--        <section class="testimonial-section">-->
-<!--            <div class="auto-container">-->
-<!--                <div class="sec-title style-two">-->
-<!--                    <span>Testimonials</span>-->
-<!--                    <h2>Why People Believe in Us!</h2>-->
-<!--                </div>-->
-<!--                <div class="two-column-carousel owl-carousel owl-theme owl-dots-none">-->
-<!--                    <div class="testimonial-block-one">-->
-<!--                        <div class="inner-box">-->
-<!--                            <div class="icon-box"><i class="flaticon-quote"></i></div>-->
-<!--                            <p>Slore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit</p>-->
-<!--                            <div class="author-box">-->
-<!--                                <figure class="image-box"><img src="assets/images/resource/testimonial-1.png" alt=""></figure>-->
-<!--                                <h5>Richard K. Le</h5>-->
-<!--                                <span class="designation">HD Manager</span>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="testimonial-block-one">-->
-<!--                        <div class="inner-box">-->
-<!--                            <div class="icon-box"><i class="flaticon-quote"></i></div>-->
-<!--                            <p>Asi enim ad minim veniam, quis nostrud exerci tation uLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</p>-->
-<!--                            <div class="author-box">-->
-<!--                                <figure class="image-box"><img src="assets/images/resource/testimonial-2.png" alt=""></figure>-->
-<!--                                <h5>Donnell J. Creech</h5>-->
-<!--                                <span class="designation">Sonographer</span>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </section>-->
-<!--        &lt;!&ndash; testimonial-section end &ndash;&gt;-->
-
-
-<!--        &lt;!&ndash; funfact-section &ndash;&gt;-->
-<!--        <section class="funfact-section centred bg-color-2">-->
-<!--            <div class="auto-container">-->
-<!--                <div class="counter-inner wow slideInUp animated animated" data-wow-delay="00ms" data-wow-duration="1500ms">-->
-<!--                    <div class="line"></div>-->
-<!--                    <div class="row clearfix">-->
-<!--                        <div class="col-lg-3 col-md-6 col-sm-12 counter-block">-->
-<!--                            <div class="counter-block-one">-->
-<!--                                <div class="inner-box">-->
-<!--                                    <div class="icon-box"><i class="flaticon-notes"></i></div>-->
-<!--                                    <div class="count-outer count-box">-->
-<!--                                        <span class="count-text" data-speed="1500" data-stop="2490">0</span>-->
-<!--                                    </div>-->
-<!--                                    <span class="text">Finished Projects</span>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-lg-3 col-md-6 col-sm-12 counter-block">-->
-<!--                            <div class="counter-block-one">-->
-<!--                                <div class="inner-box">-->
-<!--                                    <div class="icon-box"><i class="flaticon-flag"></i></div>-->
-<!--                                    <div class="count-outer count-box">-->
-<!--                                        <span class="count-text" data-speed="1500" data-stop="7410">0</span>-->
-<!--                                    </div>-->
-<!--                                    <span class="text">Creative Materials</span>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-lg-3 col-md-6 col-sm-12 counter-block">-->
-<!--                            <div class="counter-block-one">-->
-<!--                                <div class="inner-box">-->
-<!--                                    <div class="icon-box"><i class="flaticon-medal"></i></div>-->
-<!--                                    <div class="count-outer count-box">-->
-<!--                                        <span class="count-text" data-speed="1500" data-stop="5240">0</span>-->
-<!--                                    </div>-->
-<!--                                    <span class="text">Experienced Masters</span>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-lg-3 col-md-6 col-sm-12 counter-block">-->
-<!--                            <div class="counter-block-one">-->
-<!--                                <div class="inner-box">-->
-<!--                                    <div class="icon-box"><i class="flaticon-speaker"></i></div>-->
-<!--                                    <div class="count-outer count-box">-->
-<!--                                        <span class="count-text" data-speed="1500" data-stop="250">0</span>-->
-<!--                                    </div>-->
-<!--                                    <span class="text">Professional Awards</span>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </section>-->
-<!--        &lt;!&ndash; funfact-section end &ndash;&gt;-->
 
 
         <!-- team-section -->

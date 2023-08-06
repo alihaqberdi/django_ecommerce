@@ -1,14 +1,9 @@
-from django.contrib.auth.models import User
-from django.contrib.auth.tokens import default_token_generator
 from django.contrib.sites.shortcuts import get_current_site
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.core.mail import EmailMessage
 from users.form import SignUpForm
 from django.contrib.auth import login, logout
-from django.template.loader import render_to_string
-from django.utils.encoding import force_bytes
-from django.utils.http import urlsafe_base64_encode
 import random
 import string
 
@@ -19,6 +14,7 @@ def generate_code():
     return "".join(random.choices(string.digits + string.ascii_letters, k=6))
 
 def LoginView(request):
+    print(1)
     if request.method =='POST':
         date = request.POST
         user = CustomUser.objects.filter(email=date['username'])
@@ -60,6 +56,7 @@ def ConfirmEmailView(request, uniq_id):
         if user.confirm_email == user_confirm:
             user.is_active = True
             user.save()
+            login(request, user)
             return redirect('home')
         messages.error(request, "Tasdiqlash kodi Xato!")
     return render(request, 'confirm_email.html')
