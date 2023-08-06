@@ -42,7 +42,6 @@ INSTALLED_APPS = [
 
     # globals
     'phone_field',
-    'rest_framework',
     'ckeditor',
 
 
