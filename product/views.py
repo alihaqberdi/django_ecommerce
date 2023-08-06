@@ -76,8 +76,13 @@ def CommentAddView(request, pk):
     return redirect('detailpage', pk)
 
 
-def ShopView(request):
-    products = Product.objects.filter(is_active=True)
+def ShopView(request, pk):
+    if pk == 2:
+        products = Product.objects.filter(is_active=True).order_by('price')
+    elif pk == 3:
+        products = Product.objects.filter(is_active=True).order_by('-price')
+    else:
+        products = Product.objects.filter(is_active=True)
     products, category = all_obj(request, products)
     context = {
         'product': products,

@@ -398,23 +398,26 @@
 		var minval = val[5]
 		var maxval = val[6]
 		if (minval == undefined || maxval==undefined){
-			maxval = 2000
+			maxval = 1000
 			minval = 1
 		}
 		$( ".price-range-slider" ).slider({
 			range: true,
 			min: 1,
-			max: 500,
+			max: 1000,
 			values: [ minval, maxval ],
 			slide: function( event, ui ) {
 			$( "input.property-amount" ).val( ui.values[ 0 ] + " - " + ui.values[ 1 ] );
 			},
 			stop: function(event, ui) {
-					var domain = 'http://127.0.0.1:8000';
+					var domain = window.location.hostname;
                     var minValue = ui.values[0];
                     var maxValue = ui.values[1];
-                    
-                    var url = domain + '/product/filter/'+ minValue+'/' +maxValue+'/'
+                    var port = ""
+                    if (domain == "127.0.0.1"){
+                        port = ':8000'
+                    }
+                    var url = 'http://' +  domain + port + '/product/filter/'+ minValue+'/' +maxValue+'/'
                     
 					window.location.href=url
 			}

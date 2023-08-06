@@ -46,12 +46,16 @@
                 <div class="row">
                     <div class="col-8"> </div>
                 <div class="col-4">
-                <select class="form-select selecting" aria-label="Default select example">
-                      <option selected>Open this select menu</option>
-                      <option value="1">Arzon -- Qimmatlashib</option>
-                      <option value="2">Qimmat -- Arzonlashib</option>
-                      <option value="3"></option>
-                    </select>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Filter
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="{% url 'shop' 1 %}">Standart</a>
+                    <a class="dropdown-item" href="{% url 'shop' 2 %}">Arzon > Qimmat</a>
+                    <a class="dropdown-item" href="{% url 'shop' 3 %}">Qimmat > Arzon</a>
+                  </div>
+                </div>
                 </div>
                 </div><hr>
                 <div class="row clearfix">
