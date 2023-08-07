@@ -5,6 +5,7 @@ from .models import Product, Rating, Cart, CartItem, Category, Comment
 from django.shortcuts import render, get_object_or_404, redirect
 from .form import ContactMsgForm
 from django.contrib import messages
+from django.core.cache import cache
 
 
 def AllView(request):
